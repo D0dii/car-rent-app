@@ -1,4 +1,4 @@
-import { SignIn, SignUp } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 import { Metadata } from "next";
 import { Box, Container, Typography } from "@mui/material";
 

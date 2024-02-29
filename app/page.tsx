@@ -24,7 +24,7 @@ export default function Home() {
                 Rent Car App
               </Typography>
 
-              <Link href={"/signup"}>
+              <Link href={"/auth/signin"}>
                 <Button variant="contained">Login</Button>
               </Link>
             </Box>
