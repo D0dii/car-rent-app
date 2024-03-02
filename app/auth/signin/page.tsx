@@ -1,6 +1,8 @@
 import { SignIn } from "@clerk/nextjs";
 import { Metadata } from "next";
 import { Box, Container, Typography } from "@mui/material";
+import { auth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Rent car app login",
@@ -8,6 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const { userId } = auth();
+  if (userId) {
+    redirect("/findCar");
+  }
   return (
     <main>
       <Container>
