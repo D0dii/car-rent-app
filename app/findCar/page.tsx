@@ -1,20 +1,24 @@
-import { UserButton } from "@clerk/nextjs";
-import { Box, Container } from "@mui/material";
+import { Autocomplete, Box, Container, TextField } from "@mui/material";
 import { Metadata } from "next";
+import Navbar from "../_components/Navbar";
+import usePolishCities from "../hooks/usePolishCities";
+import PageContent from "./PageContent";
 
 export const metadata: Metadata = {
   title: "Find car",
   description: "Page to find car that matches criteria",
 };
 
-export default function Page() {
+export default async function Page() {
+  const data = await usePolishCities();
   return (
-    <main>
-      <Container>
-        <Box display={"flex"} alignItems={"center"} justifyContent={"center"} mt={"4rem"}>
-          <UserButton afterSignOutUrl="/" />
-        </Box>
-      </Container>
-    </main>
+    <>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <main>
+        <PageContent data={data}></PageContent>
+      </main>
+    </>
   );
 }

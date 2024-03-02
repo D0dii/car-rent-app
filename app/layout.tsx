@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import "./globals.css";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./_theme/theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +26,11 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <AppRouterCacheProvider>
-          <body className={inter.className}>{children}</body>
-        </AppRouterCacheProvider>
+        <body className={inter.className}>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </AppRouterCacheProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
