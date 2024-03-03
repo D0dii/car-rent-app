@@ -1,4 +1,3 @@
-import { Autocomplete, Box, Container, TextField } from "@mui/material";
 import { Metadata } from "next";
 import Navbar from "../_components/Navbar";
 import usePolishCities from "../hooks/usePolishCities";
