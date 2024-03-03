@@ -29,6 +29,9 @@ type FormValues = {
 export default function PageContent({ data }: { data: any }) {
   const [dropOffDifferentLocation, setDropOffDifferentLocation] = useState(false);
   function handleDropOffDifferentLocation() {
+    if (dropOffDifferentLocation) {
+      form.setValue("dropoffLocation", "");
+    }
     setDropOffDifferentLocation(!dropOffDifferentLocation);
   }
   function createNewDatePlusThreeDays() {
