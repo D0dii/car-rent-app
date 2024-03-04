@@ -28,11 +28,11 @@ model Car {
   engine Decimal?
   typeOfFuel String?
   carCategory String
-  carImage String
+  carImage String?
   securityDeposit Int @default(0)
   latitude Float
   longitude Float
-  locationId String?
+  city String
   isAvailable Boolean @default(true)
   isElectric Boolean @default(false)
   isAutomatic Boolean @default(false)
