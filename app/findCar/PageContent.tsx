@@ -56,15 +56,9 @@ export default function PageContent({ data }: { data: any }) {
   };
   return (
     <Container>
-      <Box
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        mt={"2rem"}
-        flexDirection={"column"}
-      >
-        <Typography variant="h3">Car Rental App - Search, Compare and Save</Typography>
-      </Box>
+      <Typography variant="h3" textAlign={"center"} mt={"2rem"}>
+        Car Rental App - Search, Compare and Save
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           display={"flex"}
