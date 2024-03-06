@@ -23,8 +23,8 @@ type Page = {
 };
 
 const pages: Page[] = [
-  { name: "My Reservations", url: "/reservations" },
-  { name: "Find Car", url: "/findCar" },
+  { name: "My Reservations", url: "/home/reservations" },
+  { name: "Find Car", url: "/home/find-car" },
 ];
 
 export default function Navbar() {

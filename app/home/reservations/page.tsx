@@ -1,7 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 import { Box, Container } from "@mui/material";
 import { Metadata } from "next";
-import Navbar from "../_components/Navbar";
+import Navbar from "../../_components/Navbar";
 
 export const metadata: Metadata = {
   title: "My Reservations",
@@ -11,9 +11,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <header>
-        <Navbar></Navbar>
-      </header>
       <main>
         <Container>
           <Box display={"flex"} alignItems={"center"} justifyContent={"center"} mt={"4rem"}>
