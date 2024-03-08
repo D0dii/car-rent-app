@@ -1,7 +1,4 @@
-import { UserButton } from "@clerk/nextjs";
-import { Box, Container } from "@mui/material";
 import { Metadata } from "next";
-import Navbar from "../../_components/Navbar";
 import { getCars } from "../../lib/actions";
 import PageContent from "./PageContent";
 
@@ -10,8 +7,15 @@ export const metadata: Metadata = {
   description: "Page to show search results for car rental app",
 };
 
-export default async function Page() {
-  let result = await getCars();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    pickupLocation: string;
+  };
+}) {
+  console.log(searchParams);
+  let result = await getCars(searchParams?.pickupLocation as string);
   console.log(result);
   return (
     <>

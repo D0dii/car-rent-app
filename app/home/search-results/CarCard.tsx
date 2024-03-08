@@ -17,7 +17,7 @@ export default function CarCard({ car }: { car: Car }) {
               )}
             </Box>
             <Box>
-              <Box display={"flex"}></Box>
+              <Box display={"flex"}>{car.city}</Box>
             </Box>
             <Box>Price</Box>
           </Box>
