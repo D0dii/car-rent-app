@@ -1,7 +1,11 @@
+"use client";
 import type { Car } from "@prisma/client";
 import { Box, Container, Typography } from "@mui/material";
 import CarCard from "./CarCard";
+import { useSearchParams } from "next/navigation";
 export default function PageContent({ cars }: { cars: Car[] }) {
+  const params = useSearchParams();
+  console.log(params.forEach((param) => console.log(param)));
   return (
     <Container>
       <Typography variant="h2" textAlign={"center"} mt={"2rem"}>

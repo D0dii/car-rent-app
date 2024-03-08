@@ -16,6 +16,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import dayjs from "dayjs";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   pickupLocation: string;
@@ -27,6 +28,7 @@ type FormValues = {
 };
 
 export default function PageContent({ data }: { data: any }) {
+  const router = useRouter();
   const [dropOffDifferentLocation, setDropOffDifferentLocation] = useState(false);
   function handleDropOffDifferentLocation() {
     if (dropOffDifferentLocation) {
@@ -53,6 +55,15 @@ export default function PageContent({ data }: { data: any }) {
   const { errors } = formState;
   const onSubmit = (data: any) => {
     console.log(data);
+    router.push(
+      `/home/search-results?pickupLocation=${data.pickupLocation}&dropoffLocation=${
+        data.dropoffLocation
+      }&pickupDate=${dayjs(data.pickupDate).format("YYYY-MM-DD")}&pickupTime=${dayjs(data.pickupTime).format(
+        "HH:mm"
+      )}&dropoffDate=${dayjs(data.dropoffDate).format("YYYY-MM-DD")}&dropoffTime=${dayjs(
+        data.dropoffTime
+      ).format("HH:mm")}`
+    );
   };
   return (
     <Container>
