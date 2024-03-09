@@ -7,6 +7,7 @@ export const getCars = async (pickupLocation: string) => {
   const cars = await prisma.car.findMany({
     where: {
       city: pickupLocation,
+      isAvailable: true,
     },
   });
 

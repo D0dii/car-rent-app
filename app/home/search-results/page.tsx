@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getCars } from "../../lib/actions";
 import PageContent from "./PageContent";
+import dayjs from "dayjs";
 
 export const metadata: Metadata = {
   title: "Search Results",
@@ -12,15 +13,21 @@ export default async function Page({
 }: {
   searchParams?: {
     pickupLocation: string;
+    dropoffLocation: string;
+    pickupDate: string;
+    pickupTime: string;
+    dropoffDate: string;
+    dropoffTime: string;
   };
 }) {
-  console.log(searchParams);
   let result = await getCars(searchParams?.pickupLocation as string);
-  console.log(result);
+  let numberOfDays =
+    ((dayjs(searchParams?.dropoffDate).toDate() as any) - (dayjs(searchParams?.pickupDate).toDate() as any)) /
+    86400000;
   return (
     <>
       <main>
-        <PageContent cars={result.props.cars}></PageContent>
+        <PageContent cars={result.props.cars} numberOfDays={numberOfDays}></PageContent>
       </main>
     </>
   );
