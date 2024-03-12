@@ -2,8 +2,32 @@ import { Car } from "@prisma/client";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Box, Typography } from "@mui/material";
+import { bookCar } from "../../lib/actions";
+import { useSearchParams } from "next/navigation";
+import { useUser } from "@clerk/clerk-react";
 
 export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays: number }) {
+  const searchParams = useSearchParams();
+  const { user } = useUser();
+  async function reserveCar() {
+    let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
+    let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
+
+    if (user) {
+      bookCar(
+        car.id,
+        user.id,
+        car.longitude,
+        car.latitude,
+        car.longitude,
+        car.latitude,
+        pickupDate,
+        dropoffDate,
+        car.pricePerDay * numberOfDays,
+        car.securityDeposit
+      );
+    }
+  }
   return (
     <Box>
       <Card sx={{ minWidth: 275 }} variant="outlined">
@@ -49,7 +73,9 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
                 {car.pricePerDay * numberOfDays}
               </Typography>
               <Box mt={"1rem"}>
-                <Button variant="contained">RESERVE</Button>
+                <Button variant="contained" onClick={reserveCar}>
+                  RESERVE
+                </Button>
               </Box>
             </Box>
           </Box>
