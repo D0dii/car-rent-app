@@ -8,7 +8,15 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
     <Box>
       <Card sx={{ minWidth: 275 }} variant="outlined">
         <CardContent>
-          <Box display={"grid"} gridTemplateColumns={"1fr 2fr 1fr"} alignItems={"center"} gap={"1rem"}>
+          <Box
+            sx={{
+              display: { xs: "flex", md: "grid" },
+              alignItems: "center",
+              flexDirection: "column",
+              gridTemplateColumns: "1fr 2fr 1fr",
+              gap: "1rem",
+            }}
+          >
             <Box>
               {car.carImage !== null ? (
                 <img src="../default-car.svg" alt="Car image" width={150} />

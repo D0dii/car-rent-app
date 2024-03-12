@@ -11,16 +11,18 @@ export const metadata: Metadata = {
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams: {
     pickupLocation: string;
     dropoffLocation: string;
     pickupDate: string;
     pickupTime: string;
     dropoffDate: string;
     dropoffTime: string;
+    minPrice?: string;
+    maxPrice?: string;
   };
 }) {
-  let result = await getCars(searchParams?.pickupLocation as string);
+  let result = await getCars(searchParams);
   let numberOfDays =
     ((dayjs(searchParams?.dropoffDate).toDate() as any) - (dayjs(searchParams?.pickupDate).toDate() as any)) /
     86400000;
