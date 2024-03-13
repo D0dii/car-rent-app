@@ -19,8 +19,8 @@ export const getCars = async (searchParams: {
       city: searchParams.pickupLocation,
       isAvailable: true,
       pricePerDay: {
-        gt: searchParams.minPrice ? parseInt(searchParams.minPrice) : 0,
-        lt: searchParams.maxPrice ? parseInt(searchParams.maxPrice) : 1000000,
+        gte: searchParams.minPrice ? parseInt(searchParams.minPrice) : 0,
+        lte: searchParams.maxPrice ? parseInt(searchParams.maxPrice) : 1000000,
       },
     },
   });

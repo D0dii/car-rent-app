@@ -5,6 +5,7 @@ import Navbar from "../../_components/Navbar";
 import { currentUser } from "@clerk/nextjs";
 import { getUserReservations } from "@/app/lib/actions";
 import { Rental } from "@prisma/client";
+import RentalCard from "./RentalCard";
 
 export const metadata: Metadata = {
   title: "My Reservations",
@@ -35,9 +36,7 @@ export default async function Page() {
                   mt={"4rem"}
                   gap={"2rem"}
                 >
-                  <Box>{reservation.carId}</Box>
-                  <Box>{reservation.totalCost}</Box>
-                  <Box>{reservation.userId}</Box>
+                  <RentalCard rental={reservation} />
                 </Box>
               );
             })}

@@ -19,11 +19,19 @@ export default function PageContent({ cars, numberOfDays }: { cars: Car[]; numbe
     }
     replace(`${pathname}?${params.toString()}`);
   }, 300);
+
   return (
     <Container>
-      <Typography variant="h2" textAlign={"center"} mt={"2rem"}>
-        Search results
-      </Typography>
+      {cars.length === 0 ? (
+        <Typography variant="h2" textAlign={"center"} mt={"2rem"}>
+          No results
+        </Typography>
+      ) : (
+        <Typography variant="h2" textAlign={"center"} mt={"2rem"}>
+          Search results
+        </Typography>
+      )}
+
       <Box display={"grid"} gridTemplateColumns={"1fr 3fr"}>
         <Box display={"flex"} flexDirection={"column"}>
           <Typography variant="h4">Filters</Typography>
