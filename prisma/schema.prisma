@@ -30,8 +30,6 @@ model Car {
   carCategory String
   carImage String?
   securityDeposit Int @default(0)
-  latitude Float
-  longitude Float
   city String
   isAvailable Boolean @default(true)
   isElectric Boolean @default(false)
@@ -47,8 +45,6 @@ model Rental {
   dropoffDate DateTime
   totalCost Int
   status String
-  pickupLongitude Float
-  pickupLatitude Float
-  dropoffLongitude Float
-  dropoffLatitude Float
+  pickupLocation String
+  dropoffLocation String
 }

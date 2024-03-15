@@ -3,30 +3,32 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Box, Typography } from "@mui/material";
 import { bookCar } from "../../lib/actions";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/clerk-react";
 
 export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays: number }) {
   const searchParams = useSearchParams();
   const { user } = useUser();
+  const router = useRouter();
   async function reserveCar() {
     let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
     let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
+    let dropoffLocationParams = searchParams.get("dropoffLocation");
+    let dropoffLocation = dropoffLocationParams ? dropoffLocationParams : car.city;
 
     if (user) {
       bookCar(
         car.id,
         user.id,
-        car.longitude,
-        car.latitude,
-        car.longitude,
-        car.latitude,
+        car.city,
+        dropoffLocation,
         pickupDate,
         dropoffDate,
         car.pricePerDay * numberOfDays,
         car.securityDeposit
       );
     }
+    router.push("/home/thank-you");
   }
   return (
     <Box>

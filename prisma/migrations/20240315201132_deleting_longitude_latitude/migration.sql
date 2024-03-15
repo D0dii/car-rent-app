@@ -12,11 +12,9 @@ CREATE TABLE "Car" (
     "engine" DECIMAL,
     "typeOfFuel" TEXT,
     "carCategory" TEXT NOT NULL,
-    "carImage" TEXT NOT NULL,
+    "carImage" TEXT,
     "securityDeposit" INTEGER NOT NULL DEFAULT 0,
-    "latitude" REAL NOT NULL,
-    "longitude" REAL NOT NULL,
-    "locationId" TEXT,
+    "city" TEXT NOT NULL,
     "isAvailable" BOOLEAN NOT NULL DEFAULT true,
     "isElectric" BOOLEAN NOT NULL DEFAULT false,
     "isAutomatic" BOOLEAN NOT NULL DEFAULT false
@@ -31,10 +29,8 @@ CREATE TABLE "Rental" (
     "dropoffDate" DATETIME NOT NULL,
     "totalCost" INTEGER NOT NULL,
     "status" TEXT NOT NULL,
-    "pickupLongitude" REAL NOT NULL,
-    "pickupLatitude" REAL NOT NULL,
-    "dropoffLongitude" REAL NOT NULL,
-    "dropoffLatitude" REAL NOT NULL,
+    "pickupLocation" TEXT NOT NULL,
+    "dropoffLocation" TEXT NOT NULL,
     CONSTRAINT "Rental_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 

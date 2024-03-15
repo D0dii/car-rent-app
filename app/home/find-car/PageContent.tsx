@@ -54,7 +54,6 @@ export default function PageContent({ data }: { data: any }) {
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
   const onSubmit = (data: any) => {
-    console.log(data);
     router.push(
       `/home/search-results?pickupLocation=${data.pickupLocation}&dropoffLocation=${
         data.dropoffLocation

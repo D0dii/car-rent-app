@@ -31,47 +31,32 @@ export const getCars = async (searchParams: {
 export async function bookCar(
   carId: string,
   userId: string,
-  pickupLongitude: number,
-  pickupLatitude: number,
-  dropoffLongitude: number,
-  dropoffLatitude: number,
+  pickupLocation: string,
+  dropoffLocation: string,
   startDate: Date,
   endDate: Date,
   cost: number,
   securityDeposit: number
 ) {
-  console.log(
-    carId,
-    userId,
-    pickupLongitude,
-    pickupLatitude,
-    dropoffLongitude,
-    dropoffLatitude,
-    startDate,
-    endDate,
-    cost,
-    securityDeposit
-  );
+  let rental = await prisma.rental.create({
+    data: {
+      carId: carId,
+      userId: userId,
+      pickupLocation: pickupLocation,
+      dropoffLocation: dropoffLocation,
+      pickupDate: startDate,
+      dropoffDate: endDate,
+      totalCost: cost + securityDeposit,
+      status: "Pending",
+    },
+  });
   await prisma.car.update({
     where: {
       id: carId,
     },
     data: {
       isAvailable: false,
-    },
-  });
-  await prisma.rental.create({
-    data: {
-      carId: carId,
-      userId: userId,
-      pickupLongitude: pickupLongitude,
-      pickupLatitude: pickupLatitude,
-      dropoffLongitude: dropoffLongitude,
-      dropoffLatitude: dropoffLatitude,
-      pickupDate: startDate,
-      dropoffDate: endDate,
-      totalCost: cost + securityDeposit,
-      status: "Pending",
+      rentalId: rental.id,
     },
   });
   revalidatePath("/home/search-results");
@@ -82,6 +67,14 @@ export async function getUserReservations(userId: string) {
   return prisma.rental.findMany({
     where: {
       userId: userId,
+    },
+  });
+}
+
+export async function getRentalCar(rentalId: string) {
+  return prisma.car.findFirst({
+    where: {
+      rentalId: rentalId,
     },
   });
 }
