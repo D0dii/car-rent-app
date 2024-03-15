@@ -11,7 +11,7 @@ export default function Page() {
     <Container>
       <Box mt={"2rem"} textAlign={"center"}>
         <Typography variant="h2">
-          Thank you for booking a car! You can view details at reservations page
+          Thank you for booking a car! You can view details at the reservations page
         </Typography>
       </Box>
     </Container>
