@@ -5,6 +5,7 @@ import { Button, Box, Typography } from "@mui/material";
 import { bookCar } from "../../lib/actions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/clerk-react";
+import Image from "next/image";
 
 export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays: number }) {
   const searchParams = useSearchParams();
@@ -45,9 +46,9 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
           >
             <Box>
               {car.carImage !== null ? (
-                <img src="../default-car.svg" alt="Car image" width={150} />
+                <Image src="../default-car.svg" alt="Car image" width={150} />
               ) : (
-                <img src="../default-car.svg" alt="Car image" width={150} />
+                <Image src="../default-car.svg" alt="Car image" width={150} />
               )}
             </Box>
 

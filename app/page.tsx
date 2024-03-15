@@ -48,7 +48,7 @@ export default function Home() {
             >
               <Box>
                 <Typography variant="h2" color={"#ff8383"}>
-                  Don't overpay with
+                  Don&apos;t overpay with
                 </Typography>
                 <Typography variant="h2">Car Rent App</Typography>
               </Box>

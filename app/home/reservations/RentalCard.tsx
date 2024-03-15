@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Box, Typography } from "@mui/material";
 import { reservationCar } from "./page";
+import Image from "next/image";
 
 export default function CarCard({ reservationCar }: { reservationCar: reservationCar }) {
   return (
@@ -13,9 +14,9 @@ export default function CarCard({ reservationCar }: { reservationCar: reservatio
             <Box display={"flex"} gap={"0.5rem"}>
               <Box>
                 {reservationCar.car.carImage !== null ? (
-                  <img src="../default-car.svg" alt="Car image" width={150} />
+                  <Image src="../default-car.svg" alt="Car image" width={150} />
                 ) : (
-                  <img src="../default-car.svg" alt="Car image" width={150} />
+                  <Image src="../default-car.svg" alt="Car image" width={150} />
                 )}
               </Box>
               <Box>
