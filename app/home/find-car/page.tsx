@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import PageContent from "./PageContent";
-import { promises as fs } from "fs";
+import data from "@/app/pl.json";
 
 export const metadata: Metadata = {
   title: "Find car",
@@ -8,8 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const file = await fs.readFile("./app/pl.json", "utf8");
-  const data = JSON.parse(file);
   return (
     <>
       <main>
