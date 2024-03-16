@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const file = await fs.readFile(process.cwd() + "/app/pl.json", "utf8");
+  const file = await fs.readFile("./app/pl.json", "utf8");
   const data = JSON.parse(file);
   return (
     <>

@@ -14,9 +14,9 @@ export default function CarCard({ reservationCar }: { reservationCar: reservatio
             <Box display={"flex"} gap={"0.5rem"}>
               <Box>
                 {reservationCar.car.carImage !== null ? (
-                  <Image src="../default-car.svg" alt="Car image" width={150} />
+                  <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
                 ) : (
-                  <Image src="../default-car.svg" alt="Car image" width={150} />
+                  <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
                 )}
               </Box>
               <Box>

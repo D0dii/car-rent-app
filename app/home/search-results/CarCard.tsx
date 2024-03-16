@@ -46,9 +46,9 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
           >
             <Box>
               {car.carImage !== null ? (
-                <Image src="../default-car.svg" alt="Car image" width={150} />
+                <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
               ) : (
-                <Image src="../default-car.svg" alt="Car image" width={150} />
+                <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
               )}
             </Box>
 
