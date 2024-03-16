@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import Navbar from "../../_components/Navbar";
-import usePolishCities from "../../hooks/usePolishCities";
 import PageContent from "./PageContent";
+import { promises as fs } from "fs";
 
 export const metadata: Metadata = {
   title: "Find car",
@@ -9,7 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const data = await usePolishCities();
+  const file = await fs.readFile(process.cwd() + "/app/pl.json", "utf8");
+  const data = JSON.parse(file);
   return (
     <>
       <main>
