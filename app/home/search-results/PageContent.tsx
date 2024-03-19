@@ -1,7 +1,7 @@
 "use client";
 import type { Car } from "@prisma/client";
 import { Box, Container, Typography, FormControlLabel, Checkbox, TextField } from "@mui/material";
-import CarCard from "./CarCard";
+import CarCard from "@/app/_components/CarCard";
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
