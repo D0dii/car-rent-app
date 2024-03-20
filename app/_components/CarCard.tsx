@@ -29,7 +29,7 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
         car.securityDeposit
       );
     }
-    router.push("/home/thank-you");
+    router.push("/thank-you");
   }
   // async function reserveCar() {
   //   let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
@@ -40,7 +40,7 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
   //     router.push("/sign-in");
   //   }
   //   router.push(
-  //     `/home/reserve-car?pickupLocation=${car.city}&dropoffLocation=${dropoffLocation}&pickupDate=${pickupDate}&dropoffDate=${dropoffDate}`
+  //     `/reserve-car?pickupLocation=${car.city}&dropoffLocation=${dropoffLocation}&pickupDate=${pickupDate}&dropoffDate=${dropoffDate}`
   //   );
   // }
   return (

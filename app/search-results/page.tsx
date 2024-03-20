@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getCars } from "../../lib/actions";
+import { getCars } from "../lib/actions";
 import PageContent from "./PageContent";
 import dayjs from "dayjs";
 

@@ -55,7 +55,7 @@ export default function PageContent({ data }: { data: any }) {
   const { errors } = formState;
   const onSubmit = (data: any) => {
     router.push(
-      `/home/search-results?pickupLocation=${data.pickupLocation}&dropoffLocation=${
+      `/search-results?pickupLocation=${data.pickupLocation}&dropoffLocation=${
         data.dropoffLocation
       }&pickupDate=${dayjs(data.pickupDate).format("YYYY-MM-DD")}&pickupTime=${dayjs(data.pickupTime).format(
         "HH:mm"

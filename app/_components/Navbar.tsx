@@ -22,8 +22,8 @@ type Page = {
 };
 
 const pages: Page[] = [
-  { name: "My Reservations", url: "/home/reservations" },
-  { name: "Find Car", url: "/home/find-car" },
+  { name: "My Reservations", url: "/reservations" },
+  { name: "Find Car", url: "/find-car" },
 ];
 
 export default function Navbar() {
@@ -39,9 +39,9 @@ export default function Navbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Box px={"1rem"}>
         <Toolbar disableGutters>
-          <Link href={"/home"}>
+          <Link href={"/"}>
             <Box display={"flex"}>
               <CarRentalIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
               <Typography
@@ -133,7 +133,7 @@ export default function Navbar() {
             <NavbarUserButton />
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 }

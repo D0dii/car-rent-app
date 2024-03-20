@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   const { userId } = auth();
   if (userId) {
-    redirect("/home/find-car");
+    redirect("/");
   }
   return (
     <main>

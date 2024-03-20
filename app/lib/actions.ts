@@ -67,8 +67,8 @@ export async function bookCar(
       rentalId: rental.id,
     },
   });
-  revalidatePath("/home/search-results");
-  revalidatePath("/home/reservations");
+  revalidatePath("/search-results");
+  revalidatePath("/reservations");
 }
 
 export async function getUserReservations(userId: string) {

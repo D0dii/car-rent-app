@@ -9,7 +9,7 @@ export default function NavbarUserButton() {
   return (
     isLoaded &&
     (user ? (
-      <UserButton afterSignOutUrl="/home" />
+      <UserButton afterSignOutUrl="/" />
     ) : (
       <Link href={"/auth/signin"}>
         <Button variant="contained">Login</Button>

@@ -1,7 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 import { Box, Container, Typography } from "@mui/material";
 import { Metadata } from "next";
-import Navbar from "../../_components/Navbar";
+import Navbar from "../_components/Navbar";
 import { currentUser } from "@clerk/nextjs";
 import { getRentalCar, getUserReservations } from "@/app/lib/actions";
 import { Rental } from "@prisma/client";

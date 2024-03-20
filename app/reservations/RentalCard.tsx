@@ -42,9 +42,14 @@ export default function CarCard({ reservationCar }: { reservationCar: reservatio
             </Box>
             <Box display={"flex"} flexDirection={"column"} gap={"0.5rem"}>
               <Box display={"grid"} gridTemplateColumns={"1fr 1fr"} gap={"1rem"}>
+                <Typography>Pickup Time - {reservationCar.rental.pickupDate.getHours()}</Typography>
+                <Typography>Dropoff Time - {reservationCar.rental.dropoffDate.getHours()}</Typography>
+              </Box>
+              <Box display={"grid"} gridTemplateColumns={"1fr 1fr"} gap={"1rem"}>
                 <Typography>Pickup Date - {reservationCar.rental.pickupDate.toDateString()}</Typography>
                 <Typography>Dropoff Date - {reservationCar.rental.dropoffDate.toDateString()}</Typography>
               </Box>
+
               <Box display={"grid"} gridTemplateColumns={"1fr 1fr"} gap={"1rem"}>
                 <Typography>Pickup Location - {reservationCar.rental.pickupLocation}</Typography>
                 <Typography>Dropoff Location - {reservationCar.rental.dropoffLocation}</Typography>

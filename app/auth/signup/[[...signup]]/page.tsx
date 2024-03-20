@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   const { userId } = auth();
   if (userId) {
-    redirect("/home/find-car");
+    redirect("/");
   }
   return (
     <main>
@@ -36,7 +36,7 @@ export default function Page() {
           <Typography variant="h2" color={"#ff8383"}>
             Car Rent App
           </Typography>
-          <SignUp afterSignUpUrl={"/home/find-car"} signInUrl="/auth" />
+          <SignUp afterSignUpUrl={"/"} signInUrl="/auth" />
         </Box>
       </Container>
     </main>
