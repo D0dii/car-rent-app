@@ -71,7 +71,10 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
             </Box>
 
             <Box display={"flex"} flexDirection={"column"}>
-              <Typography variant="caption"> Price for {numberOfDays} days</Typography>
+              <Typography variant="caption">
+                {" "}
+                Price for {numberOfDays} {numberOfDays == 1 ? "day" : "days"}
+              </Typography>
               <Typography variant="h6" fontWeight={"bold"}>
                 {car.pricePerDay * numberOfDays}
               </Typography>

@@ -11,26 +11,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <header>
-        <Box py="1rem">
-          <Container>
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-            >
-              <Typography variant="h5" color={"#1976d2"}>
-                Rent Car App
-              </Typography>
-
-              <Link href={"/auth/signin"}>
-                <Button variant="contained">Login</Button>
-              </Link>
-            </Box>
-          </Container>
-        </Box>
-      </header>
       <main>
         <Container>
           <Fade in={true} appear={true} timeout={800}>
@@ -51,6 +31,13 @@ export default function Home() {
                   Don&apos;t overpay with
                 </Typography>
                 <Typography variant="h2">Car Rent App</Typography>
+                <Box mt={"1rem"}>
+                  <Link href={"/home"}>
+                    <Button variant="contained" size="large">
+                      Go To Homepage
+                    </Button>
+                  </Link>
+                </Box>
               </Box>
               <Box>
                 <Image src="/car.svg" alt="Photo of a car" width={400} height={400}></Image>

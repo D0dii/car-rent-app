@@ -5,7 +5,11 @@ import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 
 export const getAllCars = async () => {
-  return prisma.car.findMany();
+  return prisma.car.findMany({
+    where: {
+      isAvailable: true,
+    },
+  });
 };
 
 export const getCars = async (searchParams: {

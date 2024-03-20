@@ -64,6 +64,7 @@ export default function PageContent({ data }: { data: any }) {
       ).format("HH:mm")}`
     );
   };
+  console.log(errors);
   return (
     <Container>
       <Typography variant="h3" textAlign={"center"} mt={"2rem"}>
@@ -147,7 +148,13 @@ export default function PageContent({ data }: { data: any }) {
               <Controller
                 control={control}
                 name="pickupDate"
-                rules={{ required: true }}
+                rules={{
+                  required: true,
+                  validate: (value) =>
+                    dayjs(value) > dayjs(form.getValues("dropoffDate"))
+                      ? true
+                      : "Pickup date cannot be earlier than pickup date",
+                }}
                 render={({ field }) => {
                   return (
                     <DatePicker
@@ -157,6 +164,12 @@ export default function PageContent({ data }: { data: any }) {
                       }}
                       value={dayjs(field.value)}
                       sx={{ width: 300 }}
+                      slotProps={{
+                        textField: {
+                          error: true,
+                          helperText: errors.pickupDate?.message,
+                        },
+                      }}
                     />
                   );
                 }}
@@ -178,7 +191,6 @@ export default function PageContent({ data }: { data: any }) {
                   );
                 }}
               />
-              {/* <DatePicker label="Pick-up date" sx={{ width: 300 }} /> */}
             </Box>
             <Box
               display={"flex"}
@@ -190,12 +202,16 @@ export default function PageContent({ data }: { data: any }) {
                 },
               }}
             >
-              {/* <DatePicker label="Drop-off date" sx={{ width: 300 }} />
-              <TimePicker label="Time" sx={{ width: 300 }} /> */}
               <Controller
                 control={control}
                 name="dropoffDate"
-                rules={{ required: true }}
+                rules={{
+                  required: true,
+                  validate: (value) =>
+                    dayjs(value) < dayjs(form.getValues("pickupDate"))
+                      ? true
+                      : "Dropoff date must later than pickup date",
+                }}
                 render={({ field }) => {
                   return (
                     <DatePicker
@@ -205,6 +221,12 @@ export default function PageContent({ data }: { data: any }) {
                       }}
                       value={dayjs(field.value)}
                       sx={{ width: 300 }}
+                      slotProps={{
+                        textField: {
+                          error: true,
+                          helperText: errors.dropoffDate?.message,
+                        },
+                      }}
                     />
                   );
                 }}
