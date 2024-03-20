@@ -31,6 +31,18 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
     }
     router.push("/home/thank-you");
   }
+  // async function reserveCar() {
+  //   let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
+  //   let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
+  //   let dropoffLocationParams = searchParams.get("dropoffLocation");
+  //   let dropoffLocation = dropoffLocationParams ? dropoffLocationParams : car.city;
+  //   if (!user) {
+  //     router.push("/sign-in");
+  //   }
+  //   router.push(
+  //     `/home/reserve-car?pickupLocation=${car.city}&dropoffLocation=${dropoffLocation}&pickupDate=${pickupDate}&dropoffDate=${dropoffDate}`
+  //   );
+  // }
   return (
     <Box>
       <Card sx={{ minWidth: 275 }} variant="outlined">
@@ -76,7 +88,7 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
                 Price for {numberOfDays} {numberOfDays == 1 ? "day" : "days"}
               </Typography>
               <Typography variant="h6" fontWeight={"bold"}>
-                {car.pricePerDay * numberOfDays}
+                ${car.pricePerDay * numberOfDays}
               </Typography>
               <Box mt={"1rem"}>
                 <Button variant="contained" onClick={reserveCar}>

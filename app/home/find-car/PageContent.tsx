@@ -151,9 +151,9 @@ export default function PageContent({ data }: { data: any }) {
                 rules={{
                   required: true,
                   validate: (value) =>
-                    dayjs(value) > dayjs(form.getValues("dropoffDate"))
+                    dayjs(value) < dayjs(form.getValues("dropoffDate"))
                       ? true
-                      : "Pickup date cannot be earlier than pickup date",
+                      : "Pickup date cannot be earlier than dropoff date",
                 }}
                 render={({ field }) => {
                   return (
@@ -166,7 +166,7 @@ export default function PageContent({ data }: { data: any }) {
                       sx={{ width: 300 }}
                       slotProps={{
                         textField: {
-                          error: true,
+                          error: errors.pickupDate ? true : false,
                           helperText: errors.pickupDate?.message,
                         },
                       }}
@@ -208,9 +208,9 @@ export default function PageContent({ data }: { data: any }) {
                 rules={{
                   required: true,
                   validate: (value) =>
-                    dayjs(value) < dayjs(form.getValues("pickupDate"))
+                    dayjs(value) > dayjs(form.getValues("pickupDate"))
                       ? true
-                      : "Dropoff date must later than pickup date",
+                      : "Dropoff date must be later than pickup date",
                 }}
                 render={({ field }) => {
                   return (
@@ -223,7 +223,7 @@ export default function PageContent({ data }: { data: any }) {
                       sx={{ width: 300 }}
                       slotProps={{
                         textField: {
-                          error: true,
+                          error: errors.dropoffDate ? true : false,
                           helperText: errors.dropoffDate?.message,
                         },
                       }}
