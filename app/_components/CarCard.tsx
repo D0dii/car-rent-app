@@ -3,34 +3,29 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Box, Typography } from "@mui/material";
 import { bookCar } from "../lib/actions";
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/clerk-react";
 import Image from "next/image";
+import ConfirmReservationDialog from "./ConfirmReservationDialog";
 
 export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays: number }) {
+  const [open, setOpen] = useState(false);
   const searchParams = useSearchParams();
   const { user } = useUser();
   const router = useRouter();
-  async function reserveCar() {
-    let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
-    let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
-    let dropoffLocationParams = searchParams.get("dropoffLocation");
-    let dropoffLocation = dropoffLocationParams ? dropoffLocationParams : car.city;
+  let dropoffLocationParams = searchParams.get("dropoffLocation");
+  let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
+  let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
 
-    if (user) {
-      bookCar(
-        car.id,
-        user.id,
-        car.city,
-        dropoffLocation,
-        pickupDate,
-        dropoffDate,
-        car.pricePerDay * numberOfDays,
-        car.securityDeposit
-      );
-    }
-    router.push("/thank-you");
-  }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+  };
+
   // async function reserveCar() {
   //   let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
   //   let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
@@ -91,7 +86,7 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
                 ${car.pricePerDay * numberOfDays}
               </Typography>
               <Box mt={"1rem"}>
-                <Button variant="contained" onClick={reserveCar}>
+                <Button variant="contained" onClick={handleClickOpen}>
                   RESERVE
                 </Button>
               </Box>
@@ -99,6 +94,17 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
           </Box>
         </CardContent>
       </Card>
+      <ConfirmReservationDialog
+        open={open}
+        onClose={handleClose}
+        pickupLocation={car.city}
+        dropoffLocation={searchParams.get("dropoffLocation")}
+        pickupDate={searchParams.get("pickupDate")}
+        pickupTime={searchParams.get("pickupTime")}
+        dropoffDate={searchParams.get("dropoffDate")}
+        dropoffTime={searchParams.get("dropoffTime")}
+        car={car}
+      />
     </Box>
   );
 }

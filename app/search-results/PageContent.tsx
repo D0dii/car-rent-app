@@ -2,7 +2,6 @@
 import type { Car } from "@prisma/client";
 import { Box, Container, Typography, FormControlLabel, Checkbox, TextField } from "@mui/material";
 import CarCard from "@/app/_components/CarCard";
-import { useEffect, useState } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -19,7 +18,6 @@ export default function PageContent({ cars, numberOfDays }: { cars: Car[]; numbe
     }
     replace(`${pathname}?${params.toString()}`);
   }, 300);
-
   return (
     <Container>
       {cars.length === 0 ? (
