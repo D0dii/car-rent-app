@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getCars } from "../lib/actions";
 import PageContent from "./PageContent";
 import dayjs from "dayjs";
+import calculateDaysDiff from "../lib/calculateDaysDiff";
 
 export const metadata: Metadata = {
   title: "Search Results",
@@ -23,9 +24,10 @@ export default async function Page({
   };
 }) {
   let result = await getCars(searchParams);
-  let numberOfDays =
-    ((dayjs(searchParams?.dropoffDate).toDate() as any) - (dayjs(searchParams?.pickupDate).toDate() as any)) /
-    86400000;
+  let numberOfDays = calculateDaysDiff(
+    dayjs(searchParams?.dropoffDate).toDate(),
+    dayjs(searchParams?.pickupDate).toDate()
+  );
   return (
     <>
       <main>
