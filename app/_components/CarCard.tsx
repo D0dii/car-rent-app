@@ -55,6 +55,7 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
                 ) : (
                   <Box>Unlimited mileage</Box>
                 )}
+                {car.isElectric ? <Box>Electric</Box> : ""}
               </Box>
               <Typography variant="h6">{car.city}</Typography>
             </Box>

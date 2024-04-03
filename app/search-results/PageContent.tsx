@@ -4,6 +4,8 @@ import { Box, Container, Typography, FormControlLabel, Checkbox, TextField } fro
 import CarCard from "@/app/_components/CarCard";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import ElectricCheckbox from "@/app/_components/ElectricCheckbox";
+import AutomaticCheckbox from "../_components/AutomaticCechbox";
 
 export default function PageContent({ cars, numberOfDays }: { cars: Car[]; numberOfDays: number }) {
   const searchParams = useSearchParams();
@@ -53,9 +55,10 @@ export default function PageContent({ cars, numberOfDays }: { cars: Car[]; numbe
                 ></TextField>
               </Box>
             </Box>
-            <Box>
-              <Typography variant="h6">Electric cars</Typography>
-              <FormControlLabel control={<Checkbox />} label="Electric" />
+            <Box display={"flex"} flexDirection={"column"}>
+              <Typography variant="h6">Features</Typography>
+              <ElectricCheckbox></ElectricCheckbox>
+              <AutomaticCheckbox></AutomaticCheckbox>
             </Box>
           </Box>
         </Box>

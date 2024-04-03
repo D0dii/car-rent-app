@@ -21,6 +21,8 @@ export const getCars = async (searchParams: {
   dropoffTime: string;
   minPrice?: string;
   maxPrice?: string;
+  electric?: boolean;
+  automatic?: boolean;
 }) => {
   const cars = await prisma.car.findMany({
     where: {
@@ -30,6 +32,8 @@ export const getCars = async (searchParams: {
         gte: searchParams.minPrice ? parseInt(searchParams.minPrice) : 0,
         lte: searchParams.maxPrice ? parseInt(searchParams.maxPrice) : 1000000,
       },
+      isElectric: searchParams.electric ? true : undefined,
+      isAutomatic: searchParams.automatic ? true : undefined,
     },
   });
 
