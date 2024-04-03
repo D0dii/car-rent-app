@@ -12,11 +12,6 @@ import ConfirmReservationDialog from "./ConfirmReservationDialog";
 export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays: number }) {
   const [open, setOpen] = useState(false);
   const searchParams = useSearchParams();
-  const { user } = useUser();
-  const router = useRouter();
-  let dropoffLocationParams = searchParams.get("dropoffLocation");
-  let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
-  let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -25,19 +20,6 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
   const handleClose = (value: string) => {
     setOpen(false);
   };
-
-  // async function reserveCar() {
-  //   let pickupDate = new Date(searchParams.get("pickupDate") + " " + searchParams.get("pickupTime"));
-  //   let dropoffDate = new Date(searchParams.get("dropoffDate") + " " + searchParams.get("dropoffTime"));
-  //   let dropoffLocationParams = searchParams.get("dropoffLocation");
-  //   let dropoffLocation = dropoffLocationParams ? dropoffLocationParams : car.city;
-  //   if (!user) {
-  //     router.push("/sign-in");
-  //   }
-  //   router.push(
-  //     `/reserve-car?pickupLocation=${car.city}&dropoffLocation=${dropoffLocation}&pickupDate=${pickupDate}&dropoffDate=${dropoffDate}`
-  //   );
-  // }
   return (
     <Box>
       <Card sx={{ minWidth: 275 }} variant="outlined">
@@ -52,10 +34,10 @@ export default function CarCard({ car, numberOfDays }: { car: Car; numberOfDays:
             }}
           >
             <Box>
-              {car.carImage !== null ? (
-                <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
+              {car.carImage === null ? (
+                <Image src="/default-car.svg" alt="Car image" width={150} height={150} />
               ) : (
-                <Image src="../default-car.svg" alt="Car image" width={150} height={150} />
+                <Image src={`/${car.carImage}`} alt="Car image" width={150} height={150} />
               )}
             </Box>
 

@@ -25,8 +25,8 @@ export default async function Page({
 }) {
   let result = await getCars(searchParams);
   let numberOfDays = calculateDaysDiff(
-    dayjs(searchParams?.dropoffDate).toDate(),
-    dayjs(searchParams?.pickupDate).toDate()
+    dayjs(searchParams?.pickupDate).toDate(),
+    dayjs(searchParams?.dropoffDate).toDate()
   );
   return (
     <>
