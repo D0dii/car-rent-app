@@ -36,7 +36,7 @@ export default function Page() {
           <Typography variant="h2" color={"#ff8383"}>
             Car Rent App
           </Typography>
-          <SignIn />
+          <SignIn afterSignInUrl={"/"} />
         </Box>
       </Container>
     </main>

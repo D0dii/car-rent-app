@@ -2,10 +2,8 @@ import { Car } from "@prisma/client";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Box, Typography } from "@mui/material";
-import { bookCar } from "../lib/actions";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useUser } from "@clerk/clerk-react";
 import Image from "next/image";
 import ConfirmReservationDialog from "./ConfirmReservationDialog";
 

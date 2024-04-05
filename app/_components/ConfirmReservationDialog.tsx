@@ -91,9 +91,8 @@ export default function ConfirmReservationDialog(props: ConfrimReservationDialog
   const { errors } = formState;
   const onSubmit = async (data: any) => {
     if (!user) {
-      router.push("/sign-in");
+      router.push("/auth/signin");
     } else {
-      console.log(data);
       const pickupDate = new Date(data.pickupDate);
       const dropoffDate = new Date(data.dropoffDate);
       const pickupTime = new Date(data.pickupTime);
